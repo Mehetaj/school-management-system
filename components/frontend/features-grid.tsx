@@ -1,8 +1,6 @@
 import Image from "next/image"
-import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Sparkles, RefreshCcw, Scissors, Music, ImageIcon, Plus, ArrowRight, User, Users, Calendar, Clipboard, DollarSign, BookOpen, Bell, Section } from 'lucide-react'
-import SmallTitle from "./small-title"
+import { User, Users, Calendar, Clipboard, DollarSign, BookOpen } from 'lucide-react'
 import SectionHeader from "./section-header"
 
 
