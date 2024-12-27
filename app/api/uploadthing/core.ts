@@ -57,7 +57,7 @@ export const ourFileRouter = {
     // Archive types
     "application/gzip": { maxFileSize: "1MB", maxFileCount: 4 },
     "application/zip": { maxFileSize: "1MB", maxFileCount: 4 },
-  }).onUploadComplete(async ({ metadata, file }) => {
+  }).onUploadComplete(async ({ file }) => {
     console.log("file url", file.url);
     return { uploadedBy: "JB" };
   }),

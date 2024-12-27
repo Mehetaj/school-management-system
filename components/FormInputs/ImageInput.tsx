@@ -1,14 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UploadButton } from "@/lib/uploadthing";
-// import { UploadButton } from "@/lib/uploadthing";
 import Image from "next/image";
 import React from "react";
+
+type UploadthingEndpoints = "categoryImage" | "fileUploads" | "mailAttachments";
+
+type UploadResponse = {
+  url: string;
+};
+
 type ImageInputProps = {
   title: string;
   imageUrl: string;
-  setImageUrl: any;
-  endpoint: any;
+  setImageUrl: (url: string) => void;
+  endpoint: UploadthingEndpoints;
 };
+
 export default function ImageInput({
   title,
   imageUrl,
@@ -25,21 +32,20 @@ export default function ImageInput({
           <Image
             alt={title}
             className="h-40 w-full rounded-md object-cover"
-            height="300"
+            height={300}
             src={imageUrl}
-            width="300"
+            width={300}
           />
           <UploadButton
             className="col-span-full"
             endpoint={endpoint}
-            onClientUploadComplete={(res) => {
-              // Do something with the response
+            onClientUploadComplete={(res: UploadResponse[]) => {
               console.log("Files: ", res);
-
-              setImageUrl(res[0].url);
+              if (res && res.length > 0) {
+                setImageUrl(res[0].url);
+              }
             }}
             onUploadError={(error: Error) => {
-              // Do something with the error.
               alert(`ERROR! ${error.message}`);
             }}
           />

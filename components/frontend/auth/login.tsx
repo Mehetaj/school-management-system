@@ -1,4 +1,3 @@
-"use client";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -8,12 +7,14 @@ import CustomCarousel from "../custom-carousel";
 import Logo from "@/components/logo";
 import PasswordInput from "@/components/FormInputs/PasswordInput";
 import { Lock, LogIn, Mail } from "lucide-react";
+
 export type RegisterInputProps = {
   fullName: string;
   email: string;
   password: string;
   phone: string;
 };
+
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -54,17 +55,9 @@ export default function Login() {
               placeholder="******"
               forgotPasswordLink="/forgot-password"
             />
-            {/* <TextInput
-              label="Password"
-              register={register}
-              name="password"
-              type="password"
-              errors={errors}
-              placeholder="******"
-            /> */}
 
             <SubmitButton
-            buttonIcon={LogIn}
+              buttonIcon={LogIn}
               title="Signin"
               loading={isLoading}
               loadingTitle="Signin please wait..."

@@ -1,4 +1,5 @@
 import React from "react";
+import { UseFormRegister, FieldErrors } from "react-hook-form";
 
 type RadioOption = {
   label: string;
@@ -7,11 +8,12 @@ type RadioOption = {
 
 type RadioInputProps = {
   radioOptions: RadioOption[];
-  register: any;
+  register: UseFormRegister<any>; // Adjust with your form's type if needed
   label: string;
   name: string;
-  errors: any;
+  errors: FieldErrors<any>; // Adjust with your form's type if needed
 };
+
 export default function RadioInput({
   radioOptions,
   register,
@@ -21,7 +23,7 @@ export default function RadioInput({
 }: RadioInputProps) {
   return (
     <div className="grid gap-3 pt-4">
-      <h3 className=" font-semibold text-gray-900 dark:text-white">{label}</h3>
+      <h3 className="font-semibold text-gray-900 dark:text-white">{label}</h3>
       <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
         {radioOptions.map((item, i) => {
           return (
@@ -31,8 +33,8 @@ export default function RadioInput({
             >
               <div className="flex items-center ps-3">
                 <input
-                  {...register(`${name}`, { required: true })}
-                  name={`${name}`}
+                  {...register(name, { required: true })}
+                  name={name}
                   id={item.id}
                   type="radio"
                   value={item.id}
@@ -49,8 +51,8 @@ export default function RadioInput({
           );
         })}
       </ul>
-      {errors[`${name}`] && (
-        <span className="text-red-600  text-sm">{label} is required</span>
+      {errors[name] && (
+        <span className="text-red-600 text-sm">{label} is required</span>
       )}
     </div>
   );

@@ -2,17 +2,20 @@
 import React from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+
+interface QuillEditorProps {
+  label: string;
+  className?: string;
+  value: string;
+  onChange: (content: string) => void;
+}
+
 export default function QuillEditor({
   label,
   className = "sm:col-span-2",
   value,
   onChange,
-}: {
-  label: string;
-  className: string;
-  value: any;
-  onChange: any;
-}) {
+}: QuillEditorProps) {
   const modules = {
     toolbar: [
       [{ header: [1, 2, false] }],
@@ -23,6 +26,7 @@ export default function QuillEditor({
       ["clean"],
     ],
   };
+
   const formats = [
     "header",
     "bold",
@@ -38,6 +42,7 @@ export default function QuillEditor({
     "code-block",
     "color",
   ];
+
   return (
     <div className={className}>
       <label
@@ -52,6 +57,7 @@ export default function QuillEditor({
         onChange={onChange}
         modules={modules}
         formats={formats}
+        className="bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-50 rounded-md"
       />
     </div>
   );

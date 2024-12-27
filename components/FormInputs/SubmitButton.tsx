@@ -1,16 +1,18 @@
 import { cn } from "@/lib/utils";
 import { Loader, Plus } from "lucide-react";
 import React from "react";
+
 type SubmitButtonProps = {
   title: string;
   loadingTitle?: string;
   className?: string;
-  loaderIcon?: any;
-  buttonIcon?: any;
+  loaderIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>; // More specific type for loaderIcon
+  buttonIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>; // More specific type for buttonIcon
   loading: boolean;
   showIcon?: boolean;
   size?: "default" | "sm" | "lg" | "icon" | null | undefined;
 };
+
 export default function SubmitButton({
   title,
   loadingTitle = "Saving Please wait...",
@@ -29,7 +31,7 @@ export default function SubmitButton({
           type="button"
           disabled
           className={cn(
-            "items-center flex justify-center rounded-md bg-indigo-600/55 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-not-allowed",
+            "items-center flex justify-center rounded-md bg-indigo-600/55 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-not-allowed",
             className
           )}
         >

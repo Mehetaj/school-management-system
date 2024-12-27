@@ -1,6 +1,6 @@
 "use client"
 import { Button } from '@/components/ui/button';
-import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Plus, Sparkles, Sun } from 'lucide-react';
+import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Plus, Sparkles } from 'lucide-react';
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarTrigger } from '@/components/ui/sidebar';
