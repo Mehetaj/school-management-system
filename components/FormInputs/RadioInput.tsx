@@ -1,26 +1,27 @@
 import React from "react";
-import { UseFormRegister, FieldErrors } from "react-hook-form";
+import { UseFormRegister, FieldErrors, Path, FieldValues } from "react-hook-form";
 
+// Define your form data type
 type RadioOption = {
   label: string;
   id: string;
 };
 
-type RadioInputProps = {
+type RadioInputProps<T extends FieldValues> = {
   radioOptions: RadioOption[];
-  register: UseFormRegister<any>; // Adjust with your form's type if needed
+  register: UseFormRegister<T>;
   label: string;
-  name: string;
-  errors: FieldErrors<any>; // Adjust with your form's type if needed
+  name: Path<T>; // This ensures 'name' is a valid path of your form data
+  errors: FieldErrors<T>; // This will match the errors structure to your form data type
 };
 
-export default function RadioInput({
+export default function RadioInput<T extends FieldValues>({
   radioOptions,
   register,
   label,
   name,
   errors,
-}: RadioInputProps) {
+}: RadioInputProps<T>) {
   return (
     <div className="grid gap-3 pt-4">
       <h3 className="font-semibold text-gray-900 dark:text-white">{label}</h3>

@@ -1,22 +1,22 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import { UseFormRegister, FieldErrors } from "react-hook-form";
+import { UseFormRegister, FieldErrors, Path, FieldValues } from "react-hook-form";
 
-type TextAreaProps = {
-  register: UseFormRegister<any>; // Adjust this with your form's type if needed
-  errors: FieldErrors<any>; // Adjust this with your form's type if needed
+type TextAreaProps<T extends FieldValues> = {
+  register: UseFormRegister<T>;
+  errors: FieldErrors<T>;
   label: string;
-  name: string;
+  name: Path<T>; // Ensures that name is a valid key of your form data
   helperText?: string;
 };
 
-export default function TextArea({
+export default function TextArea<T extends FieldValues>({
   register,
   errors,
   label,
   name,
   helperText = "",
-}: TextAreaProps) {
+}: TextAreaProps<T>) {
   return (
     <div className="col-span-full">
       <label

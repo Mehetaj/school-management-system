@@ -4,11 +4,11 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { CircleHelp, Eye, EyeOff } from "lucide-react";
-import { UseFormRegister, FieldValues, FieldError, Path } from "react-hook-form";
+import { UseFormRegister, FieldValues, FieldErrors, Path } from "react-hook-form";
 
 type TextInputProps<T extends FieldValues> = {
   register: UseFormRegister<T>;
-  errors: Record<string, FieldError | undefined | any>;
+  errors: FieldErrors<T>;  // Use FieldErrors with generic form type T
   label: string;
   type?: string;
   name: Path<T>;  // Ensure `name` is a valid key of the form data type
@@ -32,7 +32,7 @@ export default function PasswordInput<T extends FieldValues>({
   const [passType, setPassType] = useState(type);
 
   // Get error message if available
-  const errorMessage = errors[name]?.message || "";
+  const errorMessage = errors[name]?.message;
 
   return (
     <div className="w-full">
@@ -107,7 +107,7 @@ export default function PasswordInput<T extends FieldValues>({
 
       {/* Error Message */}
       {errorMessage && (
-        <p className="mt-1 text-xs text-red-600">{errorMessage}</p>
+        <p className="mt-1 text-xs text-red-600">{String(errorMessage)}</p> 
       )}
     </div>
   );
