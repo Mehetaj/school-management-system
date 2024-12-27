@@ -1,11 +1,13 @@
+'use client'
 
+import Login from "@/components/frontend/auth/login";
 
-const Login = () => {
+const Page = () => {
     return (
         <div>
-            Login
+            <Login />
         </div>
     );
 };
 
-export default Login;
+export default Page;
