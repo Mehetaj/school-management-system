@@ -36,11 +36,6 @@ import Logo from '@/components/logo';
 
 const AppSidebar = () => {
 
-  const user = {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  };
 
   const navMain = [
     {
